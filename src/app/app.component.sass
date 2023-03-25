@@ -1,0 +1,79 @@
+.toolbar
+    background-color: #1f86ff
+    
+.example-spacer
+    flex : 1 1 auto
+
+.menu-icon
+    background: transparent
+    border: none
+    color: white
+    display: flex
+    align-items: center
+
+.logout-icon    
+    background: transparent
+    border: none
+    color: white
+    display: flex
+    align-items: center
+
+.header-logo
+    cursor: pointer
+
+.minus-btn
+    border: none 
+    outline: none 
+    border-radius: 5px 
+    background: red 
+    color: white
+
+.add-btn
+    border: none 
+    outline: none 
+    border-radius: 5px 
+    background: green 
+    color: white   
+
+.add-to-cart-btn
+    border: none 
+    outline: none 
+    border-radius: 5px 
+    background-color: yellow 
+    color: black   
+    display: block
+    margin: 0 auto
+    padding: 5px 20px
+
+.remove-to-cart-btn
+    border: none 
+    outline: none 
+    border-radius: 5px 
+    background-color: grey 
+    color: black   
+    display: block
+    margin: 0 auto
+    padding: 5px 20px
+
+button:disabled
+  opacity: 0.5
+
+.card
+    width: 70%
+    margin: 0 auto  
+
+::ng-deep
+   .mat-badge-medium.mat-badge-after .mat-badge-content    
+       right: -13px !important    
+   .mat-badge-medium.mat-badge-above .mat-badge-content
+       top : -13px !important    
+   .mat-badge-medium .mat-badge-content
+       width: 20px !important    
+       height: 20px !important    
+   .mat-menu-panel
+        min-width: 500px !important 
+        max-width: 500px !important 
+        min-height: auto !important 
+   .mat-menu-content:not(:empty)
+        width: 75% !important
+        margin: 0 auto !important     

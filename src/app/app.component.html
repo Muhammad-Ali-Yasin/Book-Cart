@@ -1,0 +1,59 @@
+  <div>
+    <mat-toolbar class="toolbar">
+      <h1 class="text-white">Book Cart</h1>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="logout-icon"  [matMenuTriggerFor]="menu" (click)="Calculate()">
+        <mat-icon [matBadge]="cartList.length" [matBadgeHidden]="!cartList.length" matBadgeOverlap="false">shopping_cart</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <div class="my-4" *ngIf="totalAmountWithHighDicount?.PossibleSplitDiscount?.length; else elseCart">
+          <h6 class="text-center mb-4"> Total Amount With Maximum Discount </h6>
+           <table class="table text-center">
+            <thead class="table-dark">
+              <tr>
+                <th>Books</th>
+                <th>Price</th>
+                <th>Discount</th>
+                <th>Amount</th>  
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let val of totalAmountWithHighDicount.PossibleSplitDiscount">
+                <td>{{val.DiffBooks}}</td>
+                <td>{{val.Amount | currency: 'USD'}}</td>
+                <td>{{val.Discount + '%'}}</td>
+                <td>{{val.AmountWithDiscount | currency: 'USD'}}</td>
+              </tr>
+              <tr  class="table-success">
+                <td  colspan="3">Total Amount</td>
+                <td>{{totalAmountWithHighDicount.TotalAmountWithDiscount | currency: 'USD'}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ng-template #elseCart>
+          <h5 class="text-center my-4"> Please Add The Books !!! </h5>
+        </ng-template>
+      </mat-menu>
+    </mat-toolbar>
+  </div>
+  
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-md-4 my-3" *ngFor="let book of bookList; let i = index">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{book.Name}}</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="text-center mb-3">
+              <button [disabled]="book.isCart" class="minus-btn" (click)="PlusOrMinus('-',i)">-</button>
+              {{ book.Count }}
+              <button  [disabled]="book.isCart" class="add-btn" (click)="PlusOrMinus('+',i)">+</button>
+            </div>
+            <button *ngIf="!book.isCart" [disabled]="!book.Count " class="add-to-cart-btn" (click)="AddToCart(i)">Add To Cart</button>
+            <button *ngIf="book.isCart"  class="remove-to-cart-btn" (click)="RemoveFromCart(i)">Remove From Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
