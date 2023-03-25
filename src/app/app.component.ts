@@ -70,7 +70,7 @@ export class AppComponent {
           let tempTotalBookCount = totalBookCount;
           let tempCartCountData = JSON.parse(JSON.stringify(tempCartList));
           for (let j = i; j > 0;) {
-            let filterArr: any = tempCartCountData.filter((e: any) => e.Count != 0);
+            let filterArr: any = tempCartCountData.filter((e: any) => e.Count != 0).sort((a:any,b:any)=> b.Count - a.Count);
             if (filterArr.length >= j) {
               let sliceArr = filterArr.slice(0, j)
               sliceArr.map((e: any) => {
